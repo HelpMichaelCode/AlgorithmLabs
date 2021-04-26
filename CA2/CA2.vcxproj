@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CA2.cpp" />
-    <ClCompile Include="HMT.cpp" />
-    <ClCompile Include="HMT_Node.cpp" />
+    <ClCompile Include="Compare.cpp" />
+    <ClCompile Include="HuffManTree.cpp" />
+    <ClCompile Include="HuffeManTreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HMT.h" />
-    <ClInclude Include="HMT_Node.h" />
+    <ClInclude Include="Compare.h" />
+    <ClInclude Include="HuffManTree.h" />
+    <ClInclude Include="HuffeManTreeNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,6 +2,10 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <queue>
+#include "HuffeManTreeNode.h"
+#include "HuffManTree.h"
+#include "Compare.h"
 using namespace std;
 
 void writeToFile(string fileName, string content)
@@ -13,7 +17,7 @@ void writeToFile(string fileName, string content)
 }
 
 // Code referenced from -> https://www.guru99.com/cpp-file-read-write-open.html
-void readFromFile(string fileName)
+map<int,int> readFromFile(string fileName)
 {
     fstream my_file;
     my_file.open(fileName);
@@ -31,9 +35,8 @@ void readFromFile(string fileName)
         getline(my_file, data);
         cout << data << endl;
       
-        map<char, int> my_map = {};
+        map<int, int> my_map = {};
 
-        // Was struggling a bit of doing this algorithm so I referenced from here:
         for (int i = 0; data[i]; i++)
         {
             if (my_map.find(data[i]) == my_map.end())
@@ -53,14 +56,22 @@ void readFromFile(string fileName)
             cout << itr->first << '\t' << itr->second << '\n';
         }
         my_file.close();
+        return my_map;
     }
 }
 int main()
 {
     writeToFile("test.txt", "Hello World");
-    readFromFile("test.txt");
+    
+    map<int, int> my_mapV2 = readFromFile("test.txt"); // returns a map
 
+    priority_queue<HuffeManTreeNode*, vector<HuffeManTreeNode*>, Compare> queue;
+    for (auto itr = my_mapV2.begin(); itr != my_mapV2.end(); itr++) {
+        queue.push(new HuffeManTreeNode(itr->first, itr->second));
+    }
+    HuffManTree tree = HuffManTree(queue);
 
+        
     return 0;
 }
 
